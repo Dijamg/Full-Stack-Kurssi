@@ -16,8 +16,7 @@ const Blog = ({ blog, handleLike, handleDelete, currentUser }) => {
 
   const deleteButton = (blog) => {
     const userId = (JSON.parse(atob(currentUser.token.split('.')[1]))).id //Extract id from token.
-    //After a like/addition new blog's user field consist of user id only. After refresh it consists of username,name and id.
-    const isCreator = blog.user.id ? (userId === blog.user.id) : (userId === blog.user)
+    const isCreator = userId === blog.user.id
     if(isCreator){
       return(<button style={removeStyle} onClick ={deleteBlog(blog)}>Remove</button>)
     }else{
@@ -34,9 +33,7 @@ const Blog = ({ blog, handleLike, handleDelete, currentUser }) => {
 
   const output = () => {
     if(showFull){
-      // When a blog is added, first user field consists only of user id until page is refreshed.
-      // In those cases where blog has just been added, we take name from current user, since only he could have added.
-      const adder = blog.user.name ? blog.user.name : currentUser.name
+      const adder = blog.user.name
       return(
         <div className ="info">
           {blog.title} {blog.author}<br/>

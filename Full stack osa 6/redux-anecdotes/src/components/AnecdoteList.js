@@ -39,13 +39,13 @@ const anecdotesToShow = ({anecdotes, filter}) => {
   return filtered.sort((a,b) => b.votes - a.votes)
 }
 
-const mapStateToProps = (state) => {
-  // joskus on hyödyllistä tulostaa mapStateToProps:ista...
-  console.log(state)
-  return {
-    anecdotesToShow: anecdotesToShow(state)
+  const mapStateToProps = (state) => {
+    // joskus on hyödyllistä tulostaa mapStateToProps:ista...
+    console.log(state)
+    return {
+      anecdotesToShow: anecdotesToShow(state)
+    }
   }
-}
 
 const mapDispatchToProps = {
   voteAnecdote,

@@ -47,7 +47,8 @@ blogsRouter.get('/:id', async (request, response, next) => {
         user: user._id
       })
 
-      const savedBlog = await blog.save()
+      const addedBlog = await blog.save()
+      const savedBlog = await addedBlog.populate('user',{ username: 1, name: 1 }).execPopulate()
       user.blogs = user.blogs.concat(savedBlog.id)
       await user.save()
       response.json(savedBlog.toJSON())
@@ -91,7 +92,8 @@ blogsRouter.get('/:id', async (request, response, next) => {
       }
     
       const res = await Blog.findByIdAndUpdate(request.params.id, newBlog, { new: true, runValidators: true})
-      response.status(200).json(res.toJSON())
+      const changedBlog = await res.populate('user',{ username: 1, name: 1 }).execPopulate()
+      response.status(200).json(changedBlog.toJSON())
     }catch(exception){
       next(exception)
     }
