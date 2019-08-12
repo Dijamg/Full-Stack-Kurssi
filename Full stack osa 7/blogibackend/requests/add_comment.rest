@@ -1,0 +1,7 @@
+POST http://localhost:3003/api/blogs/5d4e94467889c71d14a4ac8d/comments
+Content-Type: application/json
+
+{
+    "text": "Vittu mitä paskaa"
+}
+

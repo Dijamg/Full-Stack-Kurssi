@@ -1,0 +1,9 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFsaWJhYmEiLCJpZCI6IjVkMjc3NjIyZDI0ODgxMTE4OGMxYzMxNyIsImlhdCI6MTU2Mjg2NzM1OX0.yGNLtlFtn1HW2r8O2aYUviT_LK4kt1BhIofsLWNnboA
+
+{
+    "url":"https://fullstackopen.com/osa4/token_perustainen_kirjautuminen",
+    "title":"Ohjelmoinnin perusteet",
+    "author": "Ali"
+}
